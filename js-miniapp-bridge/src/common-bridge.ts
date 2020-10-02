@@ -213,6 +213,20 @@ export class MiniAppBridge {
   }
 
   /**
+   * Associating requestUserName function to MiniAppBridge object
+   */
+  requestUserName() {
+    return new Promise<string>((resolve, reject) => {
+      return this.executor.exec(
+        'requestUserName',
+        null,
+        success => resolve(success),
+        error => reject(error)
+      );
+    });
+  }
+
+  /**
    * Associating shareInfo function to MiniAppBridge object.
    * This function does not return anything back on success.
    * @param {info} The shared info object.
